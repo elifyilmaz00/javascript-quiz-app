@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Quiz Uygulaması</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    
+
+    <div class="quiz-container" id="quiz">
+        <div class="quiz-header">
+            <h2 id="question">Soru metni burada görünecek</h2>
+            <ul id="options-list">
+                <!-- Seçenekler buraya JS ile eklenecek -->
+            </ul>
+        </div>
+        <div class="quiz-footer">
+            <p id="progress">Soru 1 / 10</p>
+        </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
 </body>
 </html>
