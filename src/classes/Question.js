@@ -5,7 +5,7 @@ export class Question{
     /**
      * Yeni bir soru nesnesi oluşturur
      * @param {string} text - soru metni
-     * @param {strimg[]} options - cevap seçeneklerinden oluşan bir dizi
+     * @param {string[]} options - cevap seçeneklerinden oluşan bir dizi
      * @param {string} answer - doğru cevap metni
      */
 
