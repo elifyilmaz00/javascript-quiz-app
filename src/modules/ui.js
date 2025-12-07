@@ -1,7 +1,7 @@
 //DOM/Arayüz İşlemleri
 
 export class UI{
-    consturctor(){
+    constructor(){
         this.questionEl=document.querySelector("#question");
         this.optionsListEl=document.querySelector("#options-list");
         this.progressEl=document.querySelector("#progress");
@@ -30,7 +30,7 @@ export class UI{
      * @param {number} totalQuestions - toplam soru sayısı
      */
 
-    displatScore(score, totalQuestions){
+    displayScore(score, totalQuestions){
         const scoreHTML = `
         <h1> Quiz Bitti!</h1>
         <h2> Skorunuz: ${score} / ${totalQuestions}</h2>
