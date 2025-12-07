@@ -1,61 +1,51 @@
 //Quiz Sınıfı
 
-//question sınıfını bu dosyada kullabilmek için import ederiz
+// Question sınıfını bu dosyada kullanabilmek için import ediyoruz.
+import { Question } from './Question.js';
 
-import {question} from "./Question.js";
-
-//Quiz sınıfını dışa aktarıyoruz
-
-export class Quiz{
-
+// Quiz sınıfını dışa aktarıyoruz.
+export class Quiz {
     /**
-     * yeni bir quiz nesnesi oluşturur
-     * @param {object[]} questionsData - data.js'ten gelen soru verilerini içeren dizi.
+     * Yeni bir Quiz nesnesi oluşturur.
+     * @param {Object[]} questionsData - data.js'ten gelen soru verilerini içeren dizi.
      */
-
-    consturctor (questionsData){
-        //gelen ham veriyi, question sınıfından nesneler üreterek dönüştürüyoruz
-        //bu, oop'nin gücüdür. artık dizimiz sadece veri değil, davranışları da olan nesneler içeriyor
+    constructor(questionsData) {
+        // Gelen ham veriyi, Question sınıfından nesneler üreterek dönüştürüyoruz.
+        // Bu, OOP'nin gücüdür. Artık dizimiz sadece veri değil, davranışları da olan nesneler içeriyor.
+        this.questions = questionsData.map(q => new Question(q.text, q.options, q.answer));
         
-        this.questions= questionDaata.map(q => new Question(q.text, q.options, q.answer));
-
-        this.score = 0; // başlangıç skoru
-        this.questionındex = 0; //başlagışta ilk soruda index = 0
+        this.score = 0; // Başlangıç skoru
+        this.questionIndex = 0; // Başlangıçta ilk sorudayız (indeks 0)
     }
 
     /**
-     * mevcut soru nesnesini döndürür
-     * @returns {Question} - dizideki geçerli soru nesnesi.
+     * Mevcut soru nesnesini döndürür.
+     * @returns {Question} - Dizideki geçerli soru nesnesi.
      */
-
-    getCurrentQuestion(){
-        return this.questions[thid.questionIndex];
+    getCurrentQuestion() {
+        return this.questions[this.questionIndex];
     }
 
     /**
-     * kullanıcının tahminini işler, skoru günceller ve sonraki soruya geçer.
-     * @param {string} userAnswer - kullanıcının tıkladığı cevap
+     * Kullanıcının tahminini işler, skoru günceller ve sonraki soruya geçer.
+     * @param {string} userAnswer - Kullanıcının tıkladığı cevap.
      */
-
-    guess(userAnswer){
+    guess(userAnswer) {
         const currentQuestion = this.getCurrentQuestion();
-
-        //mevcut sorunun kendi metodunu kullanarak cevabı kontrol ediyoruz
-        if(currentQuestion.isCorrectAnswer(userAnswer)){
-            this.score++; //skor artır
+        
+        // Mevcut sorunun kendi metodunu kullanarak cevabı kontrol ediyoruz.
+        if (currentQuestion.isCorrectAnswer(userAnswer)) {
+            this.score++; // Skor artır
         }
-
-        this.questionIndex++; //bir sonraki soruya geç
+        
+        this.questionIndex++; // Bir sonraki soruya geç
     }
 
     /**
-     * quiz'in bitip bitmediğini kontrol eder
-     * @returns {boolean} - eğer son soruya gelindiyse true, değilse false
+     * Quiz'in bitip bitmediğini kontrol eder.
+     * @returns {boolean} - Eğer son soruya gelindiyse true, değilse false.
      */
-
-    isEnded(){
+    isEnded() {
         return this.questionIndex === this.questions.length;
     }
-
-
 }
